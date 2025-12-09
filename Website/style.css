@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #eef2f3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 400px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.input-box {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.result-box {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    margin-top: 10px;
+    min-height: 40px;
+}
+
+
+.result-card {
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    margin-top: 15px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.green-card {
+    background: #28a745;
+}
+
+.blue-card {
+    background: #007bff;
+}
+
+.red-card {
+    background: #dc3545;
+}
+
+.error {
+    padding: 12px;
+    background: #f8d7da;
+    color: #721c24;
+    border-radius: 6px;
+    border: 1px solid #f5c6cb;
+    margin-top: 15px;
+}
