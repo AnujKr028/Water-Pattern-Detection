@@ -3,23 +3,24 @@ import joblib
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
-# Load your dataset
+# 1. Load data
 df = pd.read_csv("synthetic_water_usage.csv")
 
-# Use the actual correct column from your CSV
-X = df[["WaterUsage"]]
+# 2. Aggregate to get one value per household
+monthly = df.groupby("HouseholdID")["WaterUsage"].mean().reset_index()
 
-# Scale the feature
+X = monthly[["WaterUsage"]]
+
+# 3. Scale
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Train KMeans
+# 4. Train KMeans with 3 clusters
 kmeans = KMeans(n_clusters=3, random_state=42)
 kmeans.fit(X_scaled)
 
-# Save model files
+# 5. Save
 joblib.dump(kmeans, "kmeans_model.pkl")
 joblib.dump(scaler, "scaler.pkl")
 
-print("Model trained successfully!")
-print("Files created: kmeans_model.pkl, scaler.pkl")
+print("✅ Model trained on aggregated household usage.")

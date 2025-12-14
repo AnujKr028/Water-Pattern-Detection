@@ -3,23 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Water Usage Predictor</title>
+    <title>Smart Water Usage Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Chart.js for trend graph -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Smart Water Usage Cluster Predictor</h1>
+    <div class="page">
+        <header class="header">
+            <h1>Smart Water Usage Dashboard</h1>
+            <p class="subtitle">Understand your daily water behavior at a glance.</p>
+        </header>
+
+       <main class="main-grid">
+
+    <!-- LEFT PANEL -->
+    <section class="panel">
+        <h2>Enter Today’s Usage</h2>
 
         <div class="input-box">
-            <label for="usage">Enter Daily Water Usage (Litres)</label>
+            <label for="usage">Daily Water Usage (Litres)</label>
             <input type="number" id="usage" placeholder="e.g., 50">
-            <button onclick="predictCluster()">Predict Cluster</button>
+            <button onclick="handleUsageSubmit()">Analyze Usage</button>
         </div>
 
         <div id="result" class="result-box">
-            Enter a value and click Predict
+            Enter a value and click Analyze.
         </div>
+
+        <div id="summary" class="summary-box">
+            <h3>Current Status</h3>
+            <p id="summary-text">No data yet. Log your first usage.</p>
+        </div>
+
+        <div class="ai-box">
+            <div class="ai-header">
+                <h3>AI Insights</h3>
+                <div class="ai-actions">
+                    <button class="ai-button" onclick="getAiInsights()">Ask AI</button>
+                    <button class="ai-expand-btn" onclick="toggleAiInsights()">Expand</button>
+                </div>
+            </div>
+            
+            <p class="small-text">AI analyzes patterns, spikes, and possible leak behavior.</p>
+            <div id="ai-insights-text" class="ai-insights-body">
+                No insights yet. Click “Ask AI”.
+            </div>
+        </div>
+        <div class="ai-box ai-question-box">
+            <div class="ai-header">
+                <h3>Ask About Your Usage</h3>
+            </div>
+        
+            <p class="small-text">
+                Ask questions based on your water usage, trends, or graph.
+            </p>
+        
+            <textarea
+                id="ai-question-input"
+                placeholder="e.g. Why was my usage so high on certain days?"
+                rows="3"></textarea>
+        
+            <button class="ai-button full-width" onclick="askUsageQuestion()">
+                Ask Question
+            </button>
+        
+            <div id="ai-question-answer" class="ai-answer-body">
+
+                No question asked yet.
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- RIGHT PANEL (GRAPH) -->
+    <section class="panel">
+        <h2>Usage Trend (Last 30 Days)</h2>
+
+        <canvas id="usageChart"></canvas>
+
+        <p id="trend-empty" class="small-text muted" style="display:none;">
+            No usage history yet. Log data to view trend.
+        </p>
+    </section>
+
+</main>
+
     </div>
 
     <script src="script.js"></script>
