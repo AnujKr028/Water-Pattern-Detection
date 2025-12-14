@@ -1,3 +1,6 @@
+
+
+
 let usageChart = null;
 
 async function handleUsageSubmit() {
@@ -43,7 +46,7 @@ async function handleUsageSubmit() {
     `;
 
     // 2) Log usage with today's date
-    await fetch("http://127.0.0.1:8000/log-usage", {
+    await fetch("https://water-pattern-detection.onrender.com/log-usage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ usage })
