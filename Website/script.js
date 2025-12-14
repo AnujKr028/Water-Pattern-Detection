@@ -11,7 +11,7 @@ async function handleUsageSubmit() {
     }
 
     // 1) Predict cluster
-    const predictRes = await fetch("http://127.0.0.1:8000/predict", {
+    const predictRes = await fetch("https://water-pattern-detection.onrender.com/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ usage })
@@ -55,7 +55,7 @@ async function handleUsageSubmit() {
 }
 
 async function refreshSummary() {
-    const res = await fetch("http://127.0.0.1:8000/summary");
+    const res = await fetch("https://water-pattern-detection.onrender.com/summary");
     const data = await res.json();
 
     const summaryEl = document.getElementById("summary-text");
@@ -88,7 +88,7 @@ async function refreshSummary() {
 }
 
 async function refreshHistoryChart() {
-    const res = await fetch("http://127.0.0.1:8000/history?limit=30");
+    const res = await fetch("https://water-pattern-detection.onrender.com/history?limit=30");
     const data = await res.json();
 
     const history = data.history || [];
@@ -158,7 +158,7 @@ async function getAiInsights() {
     box.innerHTML = "Analyzing your water usage…";
 
     try {
-        const res = await fetch("http://127.0.0.1:8000/ai-insights");
+        const res = await fetch("https://water-pattern-detection.onrender.com/ai-insights");
         const data = await res.json();
 
         box.innerHTML = data.insight
@@ -211,7 +211,7 @@ async function askUsageQuestion() {
     output.innerHTML = "Thinking…";
 
     try {
-        const res = await fetch("http://127.0.0.1:8000/ai-question", {
+        const res = await fetch("https://water-pattern-detection.onrender.com/ai-question", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ question })
